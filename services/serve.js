@@ -1,26 +1,32 @@
 import axios from 'axios';
-import {API_KEY, URL} from '../config/const';
 
+import {URL, API_KEY} from '../config/const';
+
+export const getPopular = async () => {
+  console.log('Getting popular movies');
+  const response = await axios.get(`${URL}movie/popular?api_key=${API_KEY}`);
+  return [...response.data.results];
+};
 export const getMovies = async search => {
-  console.log('search', search);
+  console.log('fetch', search);
   if (!search) {
     const response = await axios.get(`${URL}movie/popular?api_key=${API_KEY}`);
-    console.log('response', response);
-    return [...response.data.resullts];
+    return [...response.data.results];
   } else {
+    console.log('in else');
     const response = await axios.get(
       `${URL}search/movie?api_key=${API_KEY}&language=en-US&query=${search}`,
     );
-    console.log('response', response);
     return [...response.data.results];
   }
 };
 
-export const getCredits = async id => {
+export const fetchCredits = async id => {
   const response = await axios.get(
     `${URL}movie/${id}/credits?api_key=${API_KEY}`,
   );
-  console.log('response', response.data);
+  console.log(response.data.crew);
+
   const director = response.data.crew.find(
     dir => dir.known_for_department === 'Directing',
   );

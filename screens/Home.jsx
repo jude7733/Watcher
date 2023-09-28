@@ -1,32 +1,44 @@
-import React from 'react';
-import {Text, View, useColorScheme, StyleSheet} from 'react-native';
-const hour = new Date().getHours();
-greet =
-  hour < 12
-    ? 'morning'
-    : hour < 16
-    ? 'afternoon'
-    : hour < 20
-    ? 'evening'
-    : 'night';
+import React, {useEffect, useState} from 'react';
+import {View, useColorScheme, StyleSheet} from 'react-native';
+import {getMovies, getPopular} from '../services/serve';
+import Loading from '../components/Loading';
+import MovieBanner from '../components/MovieBanner';
+
 export default function Home() {
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchNow, setSearchNow] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    searchNow
+      ? getMovies(searchTerm)
+      : getPopular()
+          .then(data => {
+            console.log('fetching');
+            setMovies(data);
+            console.log(movies[0]);
+            setLoading(false);
+          })
+          .catch(err => console.log(err));
+  }, [searchNow]);
+
   const isDarkMode = useColorScheme() === 'dark';
 
   const themeStyle = {
     backgroundStyle: {
-      backgroundColor: isDarkMode ? '#15202B' : '#DDDDDA',
+      backgroundColor: isDarkMode ? '#000000' : '#DDDDDA',
     },
     fontColor: {
       color: isDarkMode ? '#CCCCCC' : '#36454F',
     },
   };
-  return (
+  return loading ? (
+    <Loading />
+  ) : (
     <View style={[styles.AppContainer, themeStyle.backgroundStyle]}>
-      <View style={styles.greetingsContainer}>
-        <Text style={[themeStyle.fontColor, styles.greetings]}>
-          Good {greet}
-        </Text>
-      </View>
+      <MovieBanner movie={movies[0]} />
     </View>
   );
 }
@@ -34,29 +46,6 @@ export default function Home() {
 const styles = StyleSheet.create({
   AppContainer: {
     flex: 1,
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-  },
-  greetingsContainer: {
-    flex: 0,
-    width: 'auto',
-    alignItems: 'center',
-    justifyContent: 'center',
-    margin: 10,
-    padding: 10,
-    backgroundColor: '#22303c',
-    borderRadius: 20,
-    shadowColor: '#FFF',
-    shadowOffset: {
-      width: 4,
-      height: 4,
-    },
-  },
-  greetings: {
-    fontSize: 25,
-    fontWeight: '700',
-  },
-  highlight: {
-    fontWeight: '700',
+    flexDirection: 'column',
   },
 });

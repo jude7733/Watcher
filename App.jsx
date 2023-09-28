@@ -11,14 +11,16 @@ function App() {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
-    backgroundColor: isDarkMode ? '#15202B' : 'white',
+    backgroundColor: isDarkMode ? '#000000' : 'white',
   };
+  console.log('starting app');
   return (
     <NavigationContainer>
       {/* <SafeAreaView style={backgroundStyle}> */}
       <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+        barStyle={backgroundStyle.backgroundColor}
         backgroundColor={backgroundStyle.backgroundColor}
+        hidden={true}
       />
       <Stack.Navigator>
         <Stack.Screen
