@@ -66,3 +66,6 @@ yarn-error.log
 /coverage
 
 temp.txt
+
+config/const.js
+
