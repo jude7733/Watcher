@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Colors, View} from 'react-native-ui-lib';
+import {Colors, View, Text} from 'react-native-ui-lib';
 import {getMovies, getPopular} from '../services/serve';
 import Loading from '../components/Loading';
 import MovieBanner from '../components/MovieBanner';
@@ -18,7 +18,6 @@ export default function Home() {
           .then(data => {
             console.log('fetching');
             setMovies(data);
-            console.log(movies[0]);
             setLoading(false);
           })
           .catch(err => console.log(err));

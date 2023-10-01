@@ -11,7 +11,6 @@ import MovieScreen from './screens/MovieScreen';
 const Stack = createStackNavigator();
 
 function App() {
-  console.log('starting app');
   return (
     <NavigationContainer>
       <StatusBar hidden={true} />

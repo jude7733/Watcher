@@ -1,10 +1,10 @@
-import {Carousel, Text, Card, Colors, View} from 'react-native-ui-lib';
+import {Carousel, Card, Colors, View} from 'react-native-ui-lib';
 import React from 'react';
 
 const PosterCarousel = ({poster}) => {
-  console.log(poster);
+  poster.length = 10;
   return (
-    <View marginT-10 flex-0>
+    <View paddingH-2>
       <Carousel
         pageControlPosition={'under'}
         pageControlProps={{
@@ -14,27 +14,41 @@ const PosterCarousel = ({poster}) => {
           inactiveColor: Colors.$primary,
         }}
         loop
-        itemSpacings={10}
         autoplay
         autoplayInterval={4000}
         showCounter
-        containerStyle={({height: 400}, {width: 300})}
+        containerStyle={({height: 'auto'}, {width: 'auto'})}
         pageHeight={400}>
-        {poster.map((image, index) => (
-          <Card key={index} br20 enableShadow>
+        {poster.map((item, index) => (
+          <Card key={index} br100>
             <Card.Image
-              height={400}
-              width={300}
-              source={{uri: `https://image.tmdb.org/t/p/original${image}`}}
+              height={250}
+              width={'100%'}
+              source={{
+                uri: `https://image.tmdb.org/t/p/original${item.poster}`,
+              }}
             />
             <Card.Section
               content={[
-                {text: 'Card content here', text70: true, grey40: true},
+                {
+                  text: item.release_date.slice(0, 4),
+                  text80: true,
+                  $textGeneral: true,
+                },
+                {
+                  text: item.title,
+                  text60M: true,
+                  $textSuccess: true,
+                },
+                {text: item.vote, text80BO: true, $textDangerLight: true},
               ]}
               contentStyle={{
                 alignItems: 'left',
-                justifyContent: 'center',
+                justifyContent: 'space-between',
                 padding: 10,
+                flexDirection: 'row',
+                paddingLeft: 20,
+                paddingRight: 20,
               }}
             />
           </Card>
