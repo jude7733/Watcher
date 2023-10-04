@@ -1,26 +1,14 @@
 import React from 'react';
-import {View, Text, StyleSheet, ActivityIndicator} from 'react-native';
-
+import {Colors, LoaderScreen} from 'react-native-ui-lib';
 const Loading = () => {
   return (
-    <View style={styles.container}>
-      <ActivityIndicator size="large" color="#AAAAAA" />
-      <Text style={styles.text}>Loading...</Text>
-    </View>
+    <LoaderScreen
+      message={'Fetching Movie info...'}
+      overlay
+      messageStyle={{color: Colors.$textDanger}}
+      containerStyle={{backgroundColor: Colors.$backgroundElevated}}
+    />
   );
 };
 
 export default Loading;
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#000000',
-  },
-  text: {
-    color: '#CC3333',
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-});
