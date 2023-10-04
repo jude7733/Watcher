@@ -20,7 +20,6 @@ const MovieBanner = ({movie}) => {
     release_date: item.release_date,
     vote: item.vote_average,
   }));
-  // console.log(items);
   return (
     <View flex-0 spread br20>
       <View

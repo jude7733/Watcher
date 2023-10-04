@@ -9,7 +9,6 @@ import Home from './screens/Home';
 import MovieScreen from './screens/MovieScreen';
 
 const Stack = createStackNavigator();
-
 function App() {
   return (
     <NavigationContainer>
