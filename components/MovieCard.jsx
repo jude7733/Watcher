@@ -22,7 +22,7 @@ export const MovieCard = ({data}) => {
         // eslint-disable-next-line react-native/no-inline-styles
         contentStyle={{
           padding: 3,
-          alignItems: 'left',
+          alignItems: 'center',
         }}
       />
     </Card>

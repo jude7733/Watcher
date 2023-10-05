@@ -7,10 +7,10 @@ export const getPopular = async () => {
   const response = await axios.get(`${URL}movie/popular?api_key=${API_KEY}`);
   return [...response.data.results];
 };
-export const getDiscover = async () => {
-  console.log('Getting discover movies');
+export const getByGenre = async genre => {
+  console.log('Getting genre movies');
   const response = await axios.get(
-    `${URL}discover/movie?primary_release_date.desc&api_key=${API_KEY}`,
+    `${URL}discover/movie?with_genres=${genre}&api_key=${API_KEY}`,
   );
   return [...response.data.results];
 };

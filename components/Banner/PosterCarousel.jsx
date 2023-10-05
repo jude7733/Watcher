@@ -11,6 +11,7 @@ const PosterCarousel = ({poster}) => {
         spacing: 8,
         color: Colors.$primary,
         inactiveColor: Colors.$primary,
+        limitShownPages: 4,
       }}
       loop
       autoplay
