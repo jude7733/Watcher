@@ -36,7 +36,7 @@ const PosterCarousel = ({poster}) => {
               },
               {
                 text: item.title,
-                text60M: true,
+                text70M: true,
                 $textSuccess: true,
               },
               {text: item.vote, text80BO: true, $textDangerLight: true},

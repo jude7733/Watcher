@@ -2,22 +2,11 @@ import React, {useEffect, useState} from 'react';
 import {View, Chip} from 'react-native-ui-lib';
 import {FlatList} from 'react-native';
 import {Grid} from './Grid';
-import {getByGenre} from '../../services/serve';
-const genres = [
-  'Action',
-  'Adventure',
-  'Animation',
-  'Comedy',
-  'Crime',
-  'Romance',
-];
+const genres = [28, 12, 16, 35, 88];
 const MovieList = () => {
-  const [genre, setGenre] = useState('Animation');
-  const [movies, setMovies] = useState([]);
+  const [genre, setGenre] = useState(16);
   useEffect(() => {
-    getByGenre(genre).then(info => {
-      setMovies(info);
-    });
+    console.log(genre);
   }, [genre]);
   return (
     <View>
@@ -25,21 +14,13 @@ const MovieList = () => {
         data={genres}
         horizontal
         renderItem={({item}) => (
-          <Chip
-            label={item}
-            margin-5
-            onPress={() => {
-              setGenre(item);
-              console.log(item);
-              getByGenre(item).then(info => {
-                setMovies(info);
-              });
-            }}
-          />
+          <Chip label={item} margin-5 onPress={() => setGenre(item)} />
         )}
         keyExtractor={item => item}
       />
-      <Grid data={movies} />
+      <View marginV-20>
+        <Grid genre={genre} />
+      </View>
     </View>
   );
 };

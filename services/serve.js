@@ -8,7 +8,7 @@ export const getPopular = async () => {
   return [...response.data.results];
 };
 export const getByGenre = async genre => {
-  console.log('Getting genre movies');
+  console.log('Getting', genre);
   const response = await axios.get(
     `${URL}discover/movie?with_genres=${genre}&api_key=${API_KEY}`,
   );
