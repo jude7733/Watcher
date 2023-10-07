@@ -1,4 +1,4 @@
-import {GridList, Spacings} from 'react-native-ui-lib';
+import {View, GridList, Spacings, Text} from 'react-native-ui-lib';
 import React, {useEffect, useState} from 'react';
 import {MovieCard} from '../MovieCard';
 import Loading from '../Loading';
@@ -10,7 +10,6 @@ export const Grid = ({genre}) => {
   useEffect(() => {
     setLoading(true);
     getByGenre(genre).then(data => {
-      data.length = 9;
       setMovies(data);
       setLoading(false);
     });
@@ -18,15 +17,18 @@ export const Grid = ({genre}) => {
   return loading ? (
     <Loading />
   ) : (
-    <GridList
-      // keyExtractor={(item, index) => index.toString()}
-      data={movies}
-      // ListHeaderComponent={<Text text60>Popular</Text>}
-      // ListHeaderComponentStyle={{padding: Spacings.s2}}
-      numColumns={3}
-      listPadding={Spacings.s3}
-      itemSpacing={Spacings.s2}
-      renderItem={item => <MovieCard data={item} />}
-    />
+    <View>
+      <GridList
+        // keyExtractor={(item, index) => index.toString()}
+        data={movies}
+        ListHeaderComponent={<Text text60>{genre}</Text>}
+        ListHeaderComponentStyle={{padding: Spacings.s2}}
+        numColumns={3}
+        keepItemSize
+        listPadding={Spacings.s2}
+        itemSpacing={Spacings.s2}
+        renderItem={item => <MovieCard data={item} />}
+      />
+    </View>
   );
 };
