@@ -35,7 +35,10 @@ const PosterCarousel = ({poster}) => {
                 $textNeutralHeavy: true,
               },
               {
-                text: item.title,
+                text:
+                  item.title.length > 25
+                    ? item.title.slice(0, 25) + '...'
+                    : item.title,
                 text70M: true,
                 $textSuccess: true,
               },
