@@ -1,8 +1,7 @@
 import {Carousel, Card, Colors} from 'react-native-ui-lib';
 import React from 'react';
 
-const PosterCarousel = ({poster}) => {
-  poster.length = 8;
+const PosterCarousel = ({movies}) => {
   return (
     <Carousel
       pageControlPosition={'over'}
@@ -19,30 +18,34 @@ const PosterCarousel = ({poster}) => {
       showCounter
       containerStyle={({height: 'auto'}, {width: 'auto'})}
       pageHeight={400}>
-      {poster.map((item, index) => (
+      {movies.map((item, index) => (
         <Card key={index} br100>
           <Card.Image
             height={250}
             source={{
-              uri: `https://image.tmdb.org/t/p/w780${item?.poster}`,
+              uri: `https://image.tmdb.org/t/p/w780${item?.backdrop_path}`,
             }}
           />
           <Card.Section
             content={[
               {
-                text: item.release_date.slice(0, 4),
+                text: item?.release_date.slice(0, 4),
                 text80: true,
                 $textNeutralHeavy: true,
               },
               {
                 text:
-                  item.title.length > 25
+                  item?.title.length > 25
                     ? item.title.slice(0, 25) + '...'
                     : item.title,
                 text70M: true,
                 $textSuccess: true,
               },
-              {text: item.vote, text80BO: true, $textDangerLight: true},
+              {
+                text: item?.vote_average,
+                text80BO: true,
+                $textDangerLight: true,
+              },
             ]}
             // eslint-disable-next-line react-native/no-inline-styles
             contentStyle={{

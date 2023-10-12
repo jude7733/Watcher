@@ -1,22 +1,9 @@
+import React from 'react';
 import {View, GridList, Spacings, Text} from 'react-native-ui-lib';
-import React, {useEffect, useState} from 'react';
-import {MovieCard} from '../MovieCard';
-import Loading from '../Loading';
-import {getByGenre} from '../../services/serve';
+import {MovieCard} from './MovieCard';
 
-export const Grid = ({genre}) => {
-  const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState(false);
-  useEffect(() => {
-    setLoading(true);
-    getByGenre(genre).then(data => {
-      setMovies(data);
-      setLoading(false);
-    });
-  }, [genre]);
-  return loading ? (
-    <Loading />
-  ) : (
+export const Grid = ({genre, movies}) => {
+  return (
     <View>
       <GridList
         // keyExtractor={(item, index) => index.toString()}

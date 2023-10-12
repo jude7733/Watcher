@@ -1,39 +1,31 @@
-import React from 'react';
-import {View, Text, Colors} from 'react-native-ui-lib';
+import React, {useState, useEffect} from 'react';
+import {View} from 'react-native-ui-lib';
 import PosterCarousel from './PosterCarousel.jsx';
-const hour = new Date().getHours();
-const greet =
-  hour < 2
-    ? 'night'
-    : hour < 12
-    ? 'morning'
-    : hour < 16
-    ? 'afternoon'
-    : hour < 20
-    ? 'evening'
-    : 'night';
-const MovieBanner = ({movie}) => {
-  const items = movie.map((item, i) => ({
-    key: i,
-    poster: item.backdrop_path,
-    title: item.title,
-    release_date: item.release_date,
-    vote: item.vote_average,
-  }));
-  return (
-    <View flex-0 spread br20>
-      <View
-        flex-0
-        abs
-        zIndex={1}
-        backgroundColor={Colors.$backgroundDefault}
-        br40>
-        <Text marginL-20 marginR-10 marginV-5 text60 $textMajor>
-          Good {greet}
-        </Text>
-      </View>
+import {getPopular} from '../../services/serve';
+import Loading from '../Loading.jsx';
+import Greetings from './Greetings.jsx';
+
+const MovieBanner = () => {
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    getPopular()
+      .then(data => {
+        data.length = 8;
+        setMovies(data);
+      })
+      .catch(err => console.log(err));
+    setLoading(false);
+  }, []);
+  return loading ? (
+    <Loading />
+  ) : (
+    <View flex-0>
+      <Greetings />
       <View flex-0>
-        <PosterCarousel poster={items} />
+        <PosterCarousel movies={movies} />
       </View>
     </View>
   );
