@@ -1,10 +1,37 @@
 import axios from 'axios';
-
 import {URL, API_KEY} from '../config/const';
 
+const genreId = {
+  Action: 28,
+  Adventure: 12,
+  Animation: 16,
+  Comedy: 35,
+  Crime: 80,
+  Documentary: 99,
+  Drama: 18,
+  Family: 10751,
+  Fantasy: 14,
+  History: 36,
+  Horror: 27,
+  Music: 10402,
+  Mystery: 9648,
+  Romance: 10749,
+  'Science Fiction': 878,
+  'TV Movie': 10770,
+  Thriller: 53,
+  War: 10752,
+  Western: 37,
+};
 export const getPopular = async () => {
   console.log('Getting popular movies');
   const response = await axios.get(`${URL}movie/popular?api_key=${API_KEY}`);
+  return [...response.data.results];
+};
+export const getByGenre = async genre => {
+  console.log(genre, genreId[genre]);
+  const response = await axios.get(
+    `${URL}discover/movie?with_genres=${genreId[genre]}&api_key=${API_KEY}`,
+  );
   return [...response.data.results];
 };
 export const getMovies = async search => {
