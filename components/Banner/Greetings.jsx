@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Colors} from 'react-native-ui-lib';
+import {View, Text, Colors,BorderRadiuses} from 'react-native-ui-lib';
 const hour = new Date().getHours();
 const greet =
   hour < 2
@@ -19,7 +19,7 @@ const Greetings = () => {
       zIndex={1}
       backgroundColor={Colors.$backgroundDefault}
       br40>
-      <Text marginL-20 marginR-10 marginV-5 text60 $textMajor>
+      <Text marginL-20 marginR-10 marginV-5 text70 $textMajor>
         Good {greet}
       </Text>
     </View>

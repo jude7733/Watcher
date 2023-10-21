@@ -7,21 +7,16 @@ import Greetings from './Greetings.jsx';
 
 const MovieBanner = () => {
   const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
     getPopular()
       .then(data => {
-        data.length = 8;
+        data.length = 10;
         setMovies(data);
       })
       .catch(err => console.log(err));
-    setLoading(false);
   }, []);
-  return loading ? (
-    <Loading />
-  ) : (
+  return (
     <View flex-0>
       <Greetings />
       <View flex-0>
