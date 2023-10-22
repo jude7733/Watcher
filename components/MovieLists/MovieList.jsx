@@ -37,9 +37,7 @@ const MovieList = () => {
       })
       .catch(err => console.log(err));
   }, [genre]);
-  return loading ? (
-    <Loading />
-  ) : (
+  return (
     <View flex-1>
       <View flex-0>
         <FlatList
@@ -57,6 +55,7 @@ const MovieList = () => {
         />
       </View>
       <View flex-1>
+        {loading && <Loading />}
         <Grid genre={genre} movies={movies} />
       </View>
     </View>
