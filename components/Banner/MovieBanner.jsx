@@ -7,6 +7,7 @@ import Greetings from './Greetings.jsx';
 
 const MovieBanner = () => {
   const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getPopular()
@@ -15,11 +16,13 @@ const MovieBanner = () => {
         setMovies(data);
       })
       .catch(err => console.log(err));
+    setLoading(false);
   }, []);
   return (
     <View flex-0>
       <Greetings />
       <View flex-0>
+        {loading && <Loading />}
         <PosterCarousel movies={movies} />
       </View>
     </View>

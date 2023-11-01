@@ -1,9 +1,11 @@
 import {Card} from 'react-native-ui-lib';
 import React from 'react';
+import {useNavigation} from '@react-navigation/native';
 export const MovieCard = ({data}) => {
-  //   console.log(data);
+  const navigation = useNavigation();
   return (
-    <Card>
+    <Card
+      onPress={() => navigation.navigate('MovieDetails', {data: data?.item})}>
       <Card.Image
         height={200}
         width={100}

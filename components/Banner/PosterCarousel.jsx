@@ -1,7 +1,9 @@
 import {Carousel, Text, Card, Colors, View} from 'react-native-ui-lib';
 import React from 'react';
+import {useNavigation} from '@react-navigation/native';
 
 const PosterCarousel = ({movies}) => {
+  const navigation = useNavigation();
   return (
     <Carousel
       pageControlPosition={'under'}
@@ -10,7 +12,7 @@ const PosterCarousel = ({movies}) => {
         spacing: 8,
         color: Colors.$iconDefault,
         inactiveColor: Colors.$iconDisabled,
-        // limitShownPages: 4,
+        //limitShownPages: 4,
         enlargeActive: true,
       }}
       loop
@@ -18,7 +20,10 @@ const PosterCarousel = ({movies}) => {
       autoplayInterval={4000}
       showCounter>
       {movies.map((item, index) => (
-        <Card key={index} br100>
+        <Card
+          key={index}
+          br100
+          onPress={() => navigation.navigate('MovieDetails', {data: item})}>
           <Card.Image
             aspectRatio={1.78}
             height={240}
