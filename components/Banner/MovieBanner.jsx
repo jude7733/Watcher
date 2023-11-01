@@ -3,7 +3,6 @@ import {View} from 'react-native-ui-lib';
 import PosterCarousel from './PosterCarousel.jsx';
 import {getPopular} from '../../services/serve';
 import Loading from '../Loading.jsx';
-import Greetings from './Greetings.jsx';
 
 const MovieBanner = () => {
   const [movies, setMovies] = useState([]);
@@ -20,11 +19,8 @@ const MovieBanner = () => {
   }, []);
   return (
     <View flex-0>
-      <Greetings />
-      <View flex-0>
-        {loading && <Loading />}
-        <PosterCarousel movies={movies} />
-      </View>
+      {loading && <Loading />}
+      <PosterCarousel movies={movies} />
     </View>
   );
 };
