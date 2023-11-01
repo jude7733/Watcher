@@ -1,10 +1,10 @@
 import React from 'react';
+import 'react-native-gesture-handler';
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 import {StatusBar} from 'react-native';
 require('react-native-ui-lib/config').setConfig({appScheme: 'default'});
 import {Colors} from 'react-native-ui-lib';
-
 import Home from './screens/Home';
 import MovieScreen from './screens/MovieScreen';
 
@@ -19,7 +19,17 @@ function App() {
           component={Home}
           options={{headerShown: false}}
         />
-        <Stack.Screen name="Movie" component={MovieScreen} />
+        <Stack.Screen
+          name="MovieDetails"
+          component={MovieScreen}
+          options={{
+            headerStyle: {backgroundColor: Colors.$backgroundElevated},
+            headerTitleStyle: {color: Colors.$textMajor},
+            headerTintColor: Colors.$iconDangerLight,
+            headerTransparent: true,
+            headerTitle: '',
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

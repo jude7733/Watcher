@@ -65,7 +65,4 @@ yarn-error.log
 # testing
 /coverage
 
-temp.txt
-
-config/const.js
-
+config/
