@@ -1,14 +1,15 @@
 import React from 'react';
 import 'react-native-gesture-handler';
-import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {StatusBar} from 'react-native';
 require('react-native-ui-lib/config').setConfig({appScheme: 'default'});
-import {Colors} from 'react-native-ui-lib';
+import {Colors, Text} from 'react-native-ui-lib';
 import Home from './screens/Home';
 import MovieScreen from './screens/MovieScreen';
+import Greetings from './components/Banner/Greetings';
 
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
 function App() {
   return (
     <NavigationContainer>
@@ -17,17 +18,34 @@ function App() {
         <Stack.Screen
           name="Home"
           component={Home}
-          options={{headerShown: false}}
+          options={{
+            headerStyle: {
+              backgroundColor: Colors.$backgroundDefault,
+            },
+            headerLeft: () => {
+              return <Greetings />;
+            },
+
+            headerTintColor: Colors.$textDanger,
+            headerTitle: '',
+            headerSearchBarOptions: {
+              tintColor: Colors.$textDanger,
+              placeholderTextColor: Colors.$textDanger,
+              iconColor: Colors.$textDanger,
+              placement: 'left',
+            },
+          }}
         />
         <Stack.Screen
           name="MovieDetails"
           component={MovieScreen}
           options={{
-            headerStyle: {backgroundColor: Colors.$backgroundElevated},
-            headerTitleStyle: {color: Colors.$textMajor},
-            headerTintColor: Colors.$iconDangerLight,
+            headerTintColor: Colors.$textDanger,
             headerTransparent: true,
             headerTitle: '',
+            headerLeft: () => {
+              <Text>Back</Text>;
+            },
           }}
         />
       </Stack.Navigator>
