@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {URL, API_KEY} from '../config/const';
 
-const genreId = {
+export const genreId = {
   Action: 28,
   Adventure: 12,
   Animation: 16,

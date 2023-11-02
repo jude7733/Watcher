@@ -2,15 +2,15 @@ import {View, Card, Colors} from 'react-native-ui-lib';
 import React from 'react';
 export const MoviePoster = ({data}) => {
   return (
-    <View center paddingV-15>
+    <View center marginB-20>
       <Card
         padding-5
         backgroundColor={Colors.$backgroundDark}
-        width={200}
-        height={300}>
+        height={283}
+        width={185}>
         <Card.Image
-          height={300}
-          width={100}
+          height={278}
+          width={185}
           source={{
             uri: `https://image.tmdb.org/t/p/w185${data?.poster_path}`,
           }}
