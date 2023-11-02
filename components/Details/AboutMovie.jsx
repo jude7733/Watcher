@@ -12,7 +12,7 @@ export const AboutMovie = ({data}) => {
       br50
       spread
       marginH-10>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View
           marginV-10
           br50
