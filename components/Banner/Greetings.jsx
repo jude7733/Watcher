@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Colors} from 'react-native-ui-lib';
+import {Text} from 'react-native-ui-lib';
 const hour = new Date().getHours();
 const greet =
   hour < 2

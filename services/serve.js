@@ -23,12 +23,11 @@ const genreId = {
   Western: 37,
 };
 export const getPopular = async () => {
-  console.log('Getting popular movies');
   const response = await axios.get(`${URL}movie/popular?api_key=${API_KEY}`);
   return [...response.data.results];
 };
 export const getByGenre = async genre => {
-  console.log(genre, genreId[genre]);
+  // console.log(genre, genreId[genre]);
   const response = await axios.get(
     `${URL}discover/movie?with_genres=${genreId[genre]}&api_key=${API_KEY}`,
   );

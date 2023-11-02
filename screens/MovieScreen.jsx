@@ -11,9 +11,9 @@ export default function MovieScreen({route}) {
     <View flex paddingT-30 backgroundColor={Colors.$backgroundDefault}>
       <View abs width={windowWidth} height={windowHeight}>
         <ImageBackground
-          blurRadius={10}
+          blurRadius={1}
           source={{
-            uri: `https://image.tmdb.org/t/p/w500${data?.backdrop_path}`,
+            uri: `https://image.tmdb.org/t/p/w780${data?.backdrop_path}`,
           }}
           style={{width: windowWidth, height: windowHeight}}
         />

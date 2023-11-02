@@ -2,7 +2,7 @@ import {View, Card, Colors} from 'react-native-ui-lib';
 import React from 'react';
 export const MoviePoster = ({data}) => {
   return (
-    <View center paddingV-20>
+    <View center paddingV-15>
       <Card
         padding-5
         backgroundColor={Colors.$backgroundDark}
