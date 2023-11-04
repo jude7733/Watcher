@@ -51,11 +51,12 @@ export const fetchCredits = async id => {
   const response = await axios.get(
     `${URL}movie/${id}/credits?api_key=${API_KEY}`,
   );
-  console.log(response.data.crew);
-
   const director = response.data.crew.find(
     dir => dir.known_for_department === 'Directing',
   );
-  const credits = response.data;
-  return {director: director, credits: credits};
+  const producer = response.data.crew.find(
+    dir => dir.known_for_department === 'Production',
+  );
+  const credits = response.data.cast.slice(0, 7);
+  return {director: director, actors: credits, producer: producer};
 };
