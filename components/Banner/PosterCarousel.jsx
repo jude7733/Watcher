@@ -33,7 +33,7 @@ const PosterCarousel = ({movies}) => {
                   {item.title}
                 </Text>
                 <Text $textDangerLight text80BO>
-                  {item?.vote_average}
+                  {item?.vote_average.toFixed(1)}
                 </Text>
               </View>
             }
