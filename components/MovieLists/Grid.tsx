@@ -6,9 +6,8 @@ export const Grid = ({ genre, movies }) => {
     <View>
       <GridList
         // keyExtractor={(item, index) => index.toString()}
+        style={{ marginTop: Spacings.s4 }}
         data={movies}
-        ListHeaderComponent={<Text text60>{genre}</Text>}
-        ListHeaderComponentStyle={{ padding: Spacings.s2 }}
         numColumns={3}
         keepItemSize
         listPadding={Spacings.s2}

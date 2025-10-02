@@ -1,4 +1,4 @@
-import { Card } from "react-native-ui-lib";
+import { Card, Colors } from "react-native-ui-lib";
 import { Link } from "expo-router";
 
 export const MovieCard = ({ data }) => {
@@ -26,6 +26,7 @@ export const MovieCard = ({ data }) => {
           contentStyle={{
             padding: 3,
             alignItems: "center",
+            backgroundColor: Colors.$backgroundElevated,
           }}
         />
       </Card>
