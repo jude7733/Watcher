@@ -33,7 +33,7 @@ const PosterCarousel = ({ movies }) => {
               height={240}
               customOverlayContent={
                 <View paddingL-10 padding-5 absB>
-                  <Text $textDefaultLight text70M>
+                  <Text $textDefault text70M>
                     {item.title}
                   </Text>
                   <Text $textDangerLight text80BO>

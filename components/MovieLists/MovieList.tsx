@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Chip } from "react-native-ui-lib";
+import { View, Chip, Colors } from "react-native-ui-lib";
 import { FlatList } from "react-native";
 import { Grid } from "./Grid";
 import Loading from "../Loading";
@@ -50,7 +50,7 @@ const MovieList = () => {
             <Chip
               label={item}
               margin-5
-              backgroundColor={genre === item ? "cyan" : "#fff"}
+              backgroundColor={genre === item ? Colors.$backgroundDangerHeavy : Colors.$backgroundNeutralMedium}
               marginB-10
               onPress={() => setGenre(item)}
             />

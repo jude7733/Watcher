@@ -26,7 +26,7 @@ export const MovieCard = ({ data }) => {
           contentStyle={{
             padding: 3,
             alignItems: "center",
-            backgroundColor: Colors.$backgroundElevated,
+            backgroundColor: Colors.$backgroundGeneralMedium,
           }}
         />
       </Card>
