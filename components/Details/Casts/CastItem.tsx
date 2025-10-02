@@ -2,7 +2,7 @@ import { View, Card } from "react-native-ui-lib";
 
 export const CastItem = ({ item }) => {
   return (
-    <View marginT-5 paddingL-5>
+    <View marginT-5 paddingL-5 flex>
       {item?.profile_path && (
         <Card width={140}>
           <Card.Image
@@ -26,7 +26,6 @@ export const CastItem = ({ item }) => {
                 $textNeutral: true,
               },
             ]}
-            // eslint-disable-next-line react-native/no-inline-styles
             contentStyle={{ padding: 5 }}
           />
         </Card>

@@ -9,13 +9,13 @@ export const Cast = ({ crew }) => {
         Cast
       </Text>
       <FlatList
+        horizontal
         data={[
           crew?.director || [],
           ...(crew?.actors || []),
           crew?.producer || [],
         ]}
-        renderItem={CastItem}
-        horizontal={true}
+        renderItem={({ item }) => <CastItem {...item} />}
         showsHorizontalScrollIndicator={false}
       />
     </View>

@@ -1,5 +1,4 @@
-import { View } from "react-native";
-import { Text } from "react-native-ui-lib";
+import { Text, View } from "react-native-ui-lib";
 
 export default function Settings() {
   return (
