@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { View, Dimensions, ImageBackground, StyleSheet, Image } from "react-native";
 import { Colors } from "react-native-ui-lib";
 import { AboutMovie } from "@/components/Details/AboutMovie";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
@@ -22,31 +23,33 @@ export default function DetailsScreen() {
   if (!details) return null;
 
   return (
-    <View style={styles.container}>
-      <ImageBackground
-        blurRadius={8}
-        source={{ uri: `https://image.tmdb.org/t/p/w780${details.backdrop_path}` }}
-        resizeMode="cover"
-        style={styles.backgroundImage}
-      >
-        <View style={styles.card}>
-          <View style={styles.posterWrap}>
-            <Image
-              source={{ uri: `https://image.tmdb.org/t/p/w342${details.poster_path}` }}
-              style={styles.poster}
-            />
+    <SafeAreaView style={{ flex: 1 }}>
+      <View style={styles.container}>
+        <ImageBackground
+          blurRadius={8}
+          source={{ uri: `https://image.tmdb.org/t/p/w780${details.backdrop_path}` }}
+          resizeMode="cover"
+          style={styles.backgroundImage}
+        >
+          <View style={styles.card}>
+            <View style={styles.posterWrap}>
+              <Image
+                source={{ uri: `https://image.tmdb.org/t/p/w342${details.poster_path}` }}
+                style={styles.poster}
+              />
+            </View>
+            <AboutMovie details={details} id={Number(id)} />
           </View>
-          <AboutMovie details={details} id={Number(id)} />
-        </View>
-      </ImageBackground>
-    </View>
+        </ImageBackground>
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.$backgroundDefault,
+    backgroundColor: Colors.$backgroundElevated,
   },
   backgroundImage: {
     flex: 1,
@@ -54,7 +57,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   card: {
-    height: windowHeight * 0.88,
+    height: windowHeight * 0.93,
     width: windowWidth * 0.93,
     borderRadius: 26,
     backgroundColor: Colors.$backgroundElevated,

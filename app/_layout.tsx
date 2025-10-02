@@ -1,9 +1,8 @@
 import { DarkTheme, DefaultTheme, ThemeProvider as NavigationThemeProvider } from '@react-navigation/native';
 import { Stack } from "expo-router";
 import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { ThemeProvider, useTheme } from '@/components/ThemeContext';
-import '@/config/ui-lib-config'; // Import UI lib config
+import '@/config/ui-lib-config';
 
 function RootLayoutContent() {
   const { effectiveTheme } = useTheme();
@@ -12,16 +11,14 @@ function RootLayoutContent() {
 
   return (
     <NavigationThemeProvider value={navigationTheme}>
-      <SafeAreaView style={{ flex: 1 }}>
-        <StatusBar style={effectiveTheme === 'dark' ? 'light' : 'dark'} />
-        <Stack
-          screenOptions={{
-            headerShown: false,
-          }}
-        >
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        </Stack>
-      </SafeAreaView>
+      <StatusBar style={effectiveTheme === 'dark' ? 'light' : 'dark'} />
+      <Stack
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      </Stack>
     </NavigationThemeProvider>
   );
 }

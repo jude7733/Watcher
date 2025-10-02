@@ -50,7 +50,7 @@ const MovieList = () => {
             <Chip
               label={item}
               margin-5
-              backgroundColor={genre === item ? Colors.$backgroundDangerHeavy : Colors.$backgroundNeutralMedium}
+              backgroundColor={genre === item ? Colors.$backgroundDangerHeavy : Colors.$backgroundNeutral}
               marginB-10
               onPress={() => setGenre(item)}
             />

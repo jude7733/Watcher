@@ -3,6 +3,7 @@ import { MovieDetailsType } from "./types";
 
 const API_KEY = process.env.EXPO_PUBLIC_API_KEY;
 const API_URL = process.env.EXPO_PUBLIC_API_URL;
+const BEARER = process.env.EXPO_PUBLIC_BEARER;
 
 export const genreId = {
   Action: 28,
@@ -30,8 +31,7 @@ const options = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1ZGNhYTkxMWZkMzMzYmZjOWViM2E3MGMxNmY4Y2FlMSIsIm5iZiI6MTY5NTY0NTc0Ni41OTEsInN1YiI6IjY1MTE4MDMyMjZkYWMxMDBlYjFiMDFkYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.SFZaqUf3NnzGsDFz9hjVk7keyU6G8PFLWIdDzoYmLRc",
+    Authorization: BEARER
   },
 };
 

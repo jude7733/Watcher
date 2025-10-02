@@ -12,8 +12,7 @@ export default function Settings() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: Colors.$backgroundDefault }}>
-      <ScrollView style={{ flex: 1 }} contentContainerStyle={{ padding: 20 }}>
-        {/* Header */}
+      <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingHorizontal: 20 }}>
         <View marginB-24>
           <Text text24 style={{ color: Colors.textColor, fontWeight: '600' }}>
             Settings
@@ -23,7 +22,6 @@ export default function Settings() {
           </Text>
         </View>
 
-        {/* Appearance Section */}
         <View marginB-24>
           <Text text18 style={{ color: Colors.textColor, fontWeight: '500' }} marginB-12>
             Appearance
@@ -33,7 +31,6 @@ export default function Settings() {
           </Card>
         </View>
 
-        {/* About Section */}
         <View marginB-24>
           <Text text18 style={{ color: Colors.textColor, fontWeight: '500' }} marginB-12>
             About
@@ -46,7 +43,6 @@ export default function Settings() {
               Version 1.0.0
             </Text>
 
-            {/* GitHub Repository Link */}
             <TouchableOpacity onPress={openGitHub}>
               <View row centerV padding-8 br10 style={{ backgroundColor: Colors.tintColor + '20' }}>
                 <Ionicons
@@ -69,7 +65,6 @@ export default function Settings() {
           </Card>
         </View>
 
-        {/* Developer Section */}
         <View marginB-24>
           <Text text18 style={{ color: Colors.textColor, fontWeight: '500' }} marginB-12>
             Developer
@@ -86,7 +81,6 @@ export default function Settings() {
           </Card>
         </View>
 
-        {/* Preferences Section */}
         <View marginB-24>
           <Text text18 style={{ color: Colors.textColor, fontWeight: '500' }} marginB-12>
             Preferences
@@ -98,7 +92,6 @@ export default function Settings() {
           </Card>
         </View>
 
-        {/* Footer */}
         <View marginB-40 centerH>
           <Text text12 style={{ color: Colors.textSecondary, textAlign: 'center' }}>
             Made with ❤️ using React Native & Expo

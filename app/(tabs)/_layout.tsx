@@ -8,10 +8,17 @@ export default function TabLayout() {
         headerShown: false,
       }}
     >
-      <Tabs.Screen name="(home)" options={{
+      <Tabs.Screen name="index" options={{
         title: "Home",
         tabBarIcon: ({ color }) => <Ionicons name="home" size={24} color={color} />,
       }} />
+      <Tabs.Screen
+        name="search"
+        options={{
+          title: "Search",
+          tabBarIcon: ({ color }) => <Ionicons name="search" size={24} color={color} />,
+        }}
+      />
       <Tabs.Screen name="settings" options={{
         headerShown: true,
         title: "Settings",
